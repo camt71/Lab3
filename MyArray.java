@@ -62,14 +62,36 @@ public class MyArray {
 		}
 	}
 
-	public int[] sortDescending() {
-		Arrays.sort(array);//sap xep mang theo chieu tang dan
-		for (int i = array.length - 1; i >= 0; i--) {
-			System.out.print(array[i] + " ");//in mang theo chieu giam dan
+	//task 1.3
+
+	public static void reverseArray(int[] array) {
+		int left = 0;
+		int right = array.length - 1;
+
+		while (left < right) {
+			int temp = array[left];
+			array[left] = array[right];
+			array[right] = temp;
+			left++;
+			right--;
 		}
-		return array;
 	}
 
+	public int recursiveBinarySearchSort(int size, int target, int low, int high) {
+		Arrays.sort(array);
+		reverseArray(array);
+		if (low > high)
+			return -1;
+		else {
+			int mid = (low + high) / 2;
+			if (target == array[mid])
+				return mid;
+			else if (target < array[mid])
+				return recursiveBinarySearch(array.length - 1, target, mid + 1, high);
+			else
+				return recursiveBinarySearch(array.length, target, low, mid - 1);
+		}
+	}
 	public static void main(String[] args) {
 		int[] array = { 12, 10, 9, 45, 2, 10, 10, 45 };
 		MyArray myArray = new MyArray(array);
@@ -77,6 +99,6 @@ public class MyArray {
 //		System.out.println(myArray.recuriveLinearSearch(45));
 //		System.out.println(myArray.iterativeBinarySearch(45));
 //		System.out.println(myArray.recursiveBinarySearch(8, 10, 3, 7));
-		myArray.sortDescending();
+		System.out.println(myArray.recursiveBinarySearchSort(array.length, 12, 1, array.length - 1));
 	}
 }
