@@ -109,7 +109,7 @@ public class MyArray {
 
 		return -1;
 	}
-
+//các phương thức khác cũng làm tương tự
 	public static void main(String[] args) {
 		int[] array = { 12, 10, 9, 45, 2, 10, 10, 45 };
 		MyArray myArray = new MyArray(array);
