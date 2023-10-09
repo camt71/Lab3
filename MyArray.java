@@ -62,8 +62,7 @@ public class MyArray {
 		}
 	}
 
-	//task 1.3
-
+	//swap
 	public static void reverseArray(int[] array) {
 		int left = 0;
 		int right = array.length - 1;
@@ -92,6 +91,25 @@ public class MyArray {
 				return recursiveBinarySearch(array.length, target, low, mid - 1);
 		}
 	}
+
+	public int iterativeBinarySearchSort(int target) {
+		Arrays.sort(array);
+		reverseArray(array);
+		int low = 0;
+		int high = array.length - 1;
+		while (low <= high) {
+			int mid = (low + high) / 2;
+			if (target == array[mid])
+				return mid;
+			else if (target < array[mid])
+				low = mid + 1;
+			else
+				high = mid - 1;
+		}
+
+		return -1;
+	}
+
 	public static void main(String[] args) {
 		int[] array = { 12, 10, 9, 45, 2, 10, 10, 45 };
 		MyArray myArray = new MyArray(array);
